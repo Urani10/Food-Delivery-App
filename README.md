@@ -27,7 +27,7 @@ Welcome to Tomato! We specialize in delivering premium services that blend quali
 
 > "I've never experienced such quick and reliable service before. Highly recommend!" – **John Doe**
 
-> "The quality and speed of [Tomato] are unmatched." – **Alan Walker**
+> "The quality and speed of Tomato are unmatched." – **Alan Walker**
 
 ## Screenshots
 
