@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import Swal from "sweetalert2";
 import "./PlaceOrder.css";
 import { StoreContext } from "../../context/StoreContext";
@@ -6,8 +6,19 @@ import { StoreContext } from "../../context/StoreContext";
 const PlaceOrder = () => {
   const { getTotalCartAmount } = useContext(StoreContext);
 
+  const validateEmail = (email) => {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+  };
+
+  const validatePhone = (phone) => {
+    const phoneRegex = /^[0-9]{10,15}$/; // Allows 10-15 digits
+    return phoneRegex.test(phone);
+  };
+
   const handlePaymentClick = () => {
-    // Get all input values
+    const errors = [];
+
     const firstName = document
       .querySelector('input[placeholder="First Name"]')
       .value.trim();
@@ -36,21 +47,40 @@ const PlaceOrder = () => {
       .querySelector('input[placeholder="Phone"]')
       .value.trim();
 
-    // Check if all fields are filled
-    if (
-      !firstName ||
-      !lastName ||
-      !email ||
-      !street ||
-      !city ||
-      !state ||
-      !zipCode ||
-      !country ||
-      !phone
-    ) {
+    if (!firstName || !/^[A-Za-z]+$/.test(firstName)) {
+      errors.push("a valid first name");
+    }
+    if (!lastName || !/^[A-Za-z]+$/.test(lastName)) {
+      errors.push("a valid last name");
+    }
+    if (!email || !validateEmail(email)) {
+      errors.push("a valid email address");
+    }
+    if (!street) {
+      errors.push("a street address");
+    }
+    if (!city || !/^[A-Za-z\s]+$/.test(city)) {
+      errors.push("a valid city");
+    }
+    if (!state || !/^[A-Za-z\s]+$/.test(state)) {
+      errors.push("a valid state");
+    }
+    if (!zipCode || !/^\d{5}$/.test(zipCode)) {
+      errors.push("a 5-digit zip code");
+    }
+    if (!country) {
+      errors.push("a country");
+    }
+    if (!phone || !validatePhone(phone)) {
+      errors.push("a valid phone number (10-15 digits)");
+    }
+
+    if (errors.length > 0) {
       Swal.fire({
         title: "Error!",
-        text: "Please fill in all the Delivery Information fields.",
+        text: `Please enter ${errors.join(
+          ", "
+        )}, to proceed with your payment!`,
         icon: "error",
       });
     } else {
