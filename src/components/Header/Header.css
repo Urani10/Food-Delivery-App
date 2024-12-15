@@ -1,22 +1,11 @@
 .header {
   height: 34vw;
   margin: 30px auto;
+  background: url("/header_img.png");
+  background-repeat: no-repeat;
+  background-size: contain;
   position: relative;
-  overflow: hidden;
 }
-
-.header::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: url("/header_img.png") no-repeat center center / contain;
-  filter: brightness(70%);
-  z-index: 1;
-}
-
 .header-contents {
   position: absolute;
   display: flex;
@@ -27,7 +16,6 @@
   bottom: 10%;
   left: 6vw;
   animation: fadeIn 3s;
-  z-index: 2;
 }
 .header-contents h2 {
   font-weight: 500px;
