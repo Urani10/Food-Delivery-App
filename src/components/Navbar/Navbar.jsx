@@ -131,6 +131,16 @@ const Navbar = ({ setShowLogin }) => {
               <img src={assets.basket_icon} alt="Basket" />
             </Link>
           </div>
+          {/* Sign In Button */}
+          <button
+            onClick={() => {
+              setShowLogin(true);
+              setIsSidebarOpen(false); // Close sidebar when button is clicked
+            }}
+            className="sidebar-signin-btn"
+          >
+            Sign In
+          </button>
         </ul>
       </div>
 

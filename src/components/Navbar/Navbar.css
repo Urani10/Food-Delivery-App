@@ -116,6 +116,23 @@
   cursor: pointer;
 }
 
+/* Sign In Button in Sidebar */
+.sidebar-signin-btn {
+  background: transparent;
+  font-size: 16px;
+  color: #49557e;
+  border: 1px solid tomato;
+  padding: 10px 30px;
+  border-radius: 50px;
+  cursor: pointer;
+  transition: 0.3s;
+  margin-top: 20px;
+}
+
+.sidebar-signin-btn:hover {
+  background-color: #fff4f2;
+}
+
 /* Navbar Right Section */
 .navbar-right {
   display: flex;
