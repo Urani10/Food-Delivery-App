@@ -1,11 +1,22 @@
 .header {
   height: 34vw;
   margin: 30px auto;
-  background: url("/header_img.png");
-  background-repeat: no-repeat;
-  background-size: contain;
   position: relative;
+  overflow: hidden;
 }
+
+.header::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url("/header_img.png") no-repeat center center / contain;
+  filter: brightness(70%);
+  z-index: 1;
+}
+
 .header-contents {
   position: absolute;
   display: flex;
@@ -16,6 +27,7 @@
   bottom: 10%;
   left: 6vw;
   animation: fadeIn 3s;
+  z-index: 2;
 }
 .header-contents h2 {
   font-weight: 500px;
@@ -36,20 +48,19 @@
   border-radius: 50px;
 }
 
-@media (max-width:1050px) {
-  .header-contents{
+@media (max-width: 1050px) {
+  .header-contents {
     max-width: 45%;
   }
 }
-@media (max-width:750px) {
-
-  .header-contents{
+@media (max-width: 750px) {
+  .header-contents {
     max-width: 75%;
   }
-  .header-contents p{
-  display: none;
+  .header-contents p {
+    display: none;
   }
-  .header-contents button{
+  .header-contents button {
     padding: 2vw 4vw;
-    }
+  }
 }
