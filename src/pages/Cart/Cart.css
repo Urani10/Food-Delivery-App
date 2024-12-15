@@ -95,6 +95,12 @@
   color: white;
   border-radius: 4px;
 }
+.empty-cart {
+  text-align: center;
+  color: grey;
+  font-size: 16px;
+  margin-top: 20px;
+}
 
 @media (max-width: 750px) {
   .cart-bottom {

@@ -1,12 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import "./LoginPopup.css";
 import { assets } from "../../assets/assets";
+
 const LoginPopup = ({ setShowLogin }) => {
   const [currState, setCurrState] = useState("Login");
+  const popupRef = useRef(null);
+
+  // Close popup when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (popupRef.current && !popupRef.current.contains(event.target)) {
+        setShowLogin(false);
+      }
+    };
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, [setShowLogin]);
 
   return (
     <div className="login-popup">
-      <form className="login-popup-container">
+      <form className="login-popup-container" ref={popupRef}>
         <div className="login-popup-title">
           <h2>{currState}</h2>
           <img
